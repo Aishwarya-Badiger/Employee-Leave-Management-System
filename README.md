@@ -25,4 +25,4 @@ A Flask-based Employee Leave Management System developed using Python, Flask, My
 
 ## Author
 
-Aishwarya
+Aishwarya Badiger
