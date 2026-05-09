@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Information</title>
+
+    <style>
+
+        body{
+            margin:0;
+            font-family:'Segoe UI', sans-serif;
+            background:#f4f6f9;
+        }
+
+        .navbar{
+            background:#2c3e50;
+            color:white;
+            padding:15px 20px;
+            font-size:20px;
+            font-weight:bold;
+        }
+
+        .container{
+            padding:25px;
+        }
+
+        .card{
+            background:white;
+            padding:20px;
+            border-radius:12px;
+            box-shadow:0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h2{
+            color:#2c3e50;
+            margin-bottom:20px;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+        }
+
+        th{
+            background:#34495e;
+            color:white;
+            padding:12px;
+        }
+
+        td{
+            padding:12px;
+            text-align:center;
+            border-bottom:1px solid #eee;
+        }
+
+        tr:hover{
+            background:#f9fbff;
+        }
+
+        .btn{
+            padding:7px 12px;
+            border-radius:6px;
+            color:white;
+            text-decoration:none;
+            font-size:13px;
+        }
+
+        .delete{
+            background:#e74c3c;
+        }
+
+        .delete:hover{
+            background:#c0392b;
+        }
+
+        .back{
+            background:#3498db;
+            display:inline-block;
+            margin-top:20px;
+        }
+
+        .back:hover{
+            background:#2980b9;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="navbar">
+    Employee Information
+</div>
+
+<div class="container">
+
+    <div class="card">
+
+        <h2>All Employees</h2>
+
+        <table>
+
+            <tr>
+                <th>ID</th>
+                <th>PF Number</th>
+                <th>Name</th>
+                <th>Branch</th>
+                <th>Role</th>
+                <th>Action</th>
+            </tr>
+
+            {% for emp in employees %}
+
+            <tr>
+
+                <td>{{ emp[0] }}</td>
+                <td>{{ emp[1] }}</td>
+                <td>{{ emp[2] }}</td>
+                <td>{{ emp[3] }}</td>
+                <td>{{ emp[4] }}</td>
+
+                <td>
+
+                    <a class="btn delete"
+                       href="/delete_employee/{{ emp[0] }}">
+
+                        Delete
+
+                    </a>
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+        <a href="/manager_dashboard" class="btn back">
+            ⬅ Back to Dashboard
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

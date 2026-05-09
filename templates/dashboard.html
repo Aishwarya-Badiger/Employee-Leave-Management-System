@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Dashboard</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            background: #f4f6f9;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            background: #2c3e50;
+            color: white;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            padding: 20px;
+        }
+
+        /* ===== CARDS ===== */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            margin: 0;
+            color: #2c3e50;
+            font-size: 14px;
+        }
+
+        .card p {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+
+        /* ===== ACTION BUTTONS ===== */
+        .actions {
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: white;
+            font-size: 14px;
+        }
+
+        .apply { background: #3498db; }
+        .status { background: #9b59b6; }
+        .emergency { background: #e74c3c; }
+        .logout { background: #2c3e50; }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        /* ===== WARNING ===== */
+        .warning {
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    Employee Dashboard
+</div>
+
+<!-- CONTENT -->
+<div class="container">
+
+    <!-- USER INFO -->
+    <div class="card-container">
+
+        <div class="card">
+            <h3>PF Number</h3>
+            <p>{{ user['pf_no'] }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Name</h3>
+            <p>{{ user['name'] }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Branch</h3>
+            <p>{{ user['branch'] }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Role</h3>
+            <p>{{ user['role'] }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Leave Balance</h3>
+            <p>{{ user['leave_balance'] }}</p>
+        </div>
+
+    </div>
+
+    <!-- ACTIONS -->
+    <div class="actions">
+
+        {% if user['leave_balance'] > 0 %}
+            <a href="/apply_leave" class="btn apply">Apply Leave</a>
+        {% else %}
+            <p class="warning">
+                ⚠ Normal leave limit reached. Use Emergency Leave.
+            </p>
+        {% endif %}
+
+        <a href="/leave_status" class="btn status">Leave Status</a>
+        <a href="/emergency_leave" class="btn emergency">Emergency Leave</a>
+        <a href="/logout" class="btn logout">Logout</a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

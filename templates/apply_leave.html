@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Apply Leave</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            background: #f4f6f9;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            background: #2c3e50;
+            color: white;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+        }
+
+        /* ===== FORM CARD ===== */
+        .card {
+            background: white;
+            padding: 25px;
+            width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        textarea {
+            resize: none;
+            height: 80px;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .submit {
+            background: #3498db;
+            color: white;
+        }
+
+        .submit:hover {
+            background: #2980b9;
+        }
+
+        .back {
+            background: #7f8c8d;
+            color: white;
+            text-align: center;
+            display: block;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 10px;
+        }
+
+        .back:hover {
+            background: #636e72;
+        }
+
+        /* ===== WARNING ===== */
+        .warning {
+            color: red;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="navbar">
+    Apply Leave
+</div>
+
+<div class="container">
+
+    <div class="card">
+
+        <h2>Apply Leave</h2>
+
+        <!-- OPTIONAL WARNING (if limit reached) -->
+        {% if user and user['leave_balance'] <= 0 %}
+            <p class="warning">⚠ You cannot apply normal leave. Use Emergency Leave.</p>
+        {% endif %}
+
+        <form action="/submit_leave" method="POST">
+
+            <label>Leave Type</label>
+            <select name="leave_type">
+                <option value="casual">Casual</option>
+                <option value="sick">Sick</option>
+            </select>
+
+            <label>From Date</label>
+            <input type="date" name="from_date" required>
+
+            <label>To Date</label>
+            <input type="date" name="to_date" required>
+
+            <label>Reason</label>
+            <textarea name="reason" required></textarea>
+
+            <button type="submit" class="btn submit">Apply Leave</button>
+
+        </form>
+
+        <a href="/dashboard" class="back">⬅ Back to Dashboard</a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

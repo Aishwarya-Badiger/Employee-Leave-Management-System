@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Emergency Leave</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f9;
+            margin: 0;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            background: #2c3e50;
+            color: white;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* ===== FORM CONTAINER ===== */
+        .container {
+            max-width: 500px;
+            margin: 40px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        textarea,
+        input[type="date"],
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        textarea:focus,
+        input:focus {
+            outline: none;
+            border-color: #1abc9c;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .submit-btn {
+            background: #e74c3c;
+        }
+
+        .submit-btn:hover {
+            background: #c0392b;
+        }
+
+        .back-btn {
+            background: #34495e;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .back-btn:hover {
+            background: #2c3e50;
+        }
+
+        /* ===== NOTE ===== */
+        .note {
+            font-size: 13px;
+            color: #888;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    Emergency Leave Request
+</div>
+
+<!-- FORM -->
+<div class="container">
+
+    <h2>Apply Emergency Leave</h2>
+
+    <form action="/submit_emergency_leave" method="POST" enctype="multipart/form-data">
+
+        <label>Reason</label>
+        <textarea name="reason" placeholder="Enter reason..." required></textarea>
+
+        <label>From Date</label>
+        <input type="date" name="from_date" required>
+
+        <label>To Date</label>
+        <input type="date" name="to_date" required>
+
+        <label>Upload Proof (Image)</label>
+        <input type="file" name="proof" accept="image/*" required>
+
+        <button type="submit" class="btn submit-btn">Submit Emergency Leave</button>
+    </form>
+
+    <a href="/dashboard" class="btn back-btn">⬅ Back to Dashboard</a>
+
+    <p class="note">
+        ⚠ Emergency leave can be applied only for today and requires proof.
+    </p>
+
+</div>
+
+</body>
+</html>

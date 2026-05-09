@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family:'Segoe UI',sans-serif;
+            background:#f4f6f9;
+        }
+
+        /* ===== NAVBAR ===== */
+
+        .navbar{
+            background:#2c3e50;
+            color:white;
+            padding:15px 20px;
+            display:flex;
+            align-items:center;
+            position:sticky;
+            top:0;
+            z-index:1000;
+            box-shadow:0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .menu-icon{
+            font-size:24px;
+            cursor:pointer;
+            margin-right:15px;
+        }
+
+        .navbar-title{
+            font-size:20px;
+            font-weight:bold;
+        }
+
+        /* ===== SIDEBAR ===== */
+
+        .sidebar{
+            position:fixed;
+            left:-260px;
+            top:0;
+            width:260px;
+            height:100%;
+            background:#34495e;
+            padding-top:70px;
+            transition:0.3s;
+            z-index:999;
+        }
+
+        .sidebar.active{
+            left:0;
+        }
+
+        .sidebar a{
+            display:block;
+            color:white;
+            padding:15px 22px;
+            text-decoration:none;
+            transition:0.2s;
+            font-size:15px;
+        }
+
+        .sidebar a:hover{
+            background:#1abc9c;
+            padding-left:28px;
+        }
+
+        /* ===== CONTENT ===== */
+
+        .content{
+            padding:25px;
+        }
+
+        h2{
+            color:#2c3e50;
+            margin-bottom:20px;
+        }
+
+        /* ===== CARDS ===== */
+
+        .card-container{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+            gap:20px;
+        }
+
+        .card{
+            background:white;
+            padding:25px;
+            border-radius:12px;
+            box-shadow:0 2px 10px rgba(0,0,0,0.08);
+            transition:0.3s;
+        }
+
+        .card:hover{
+            transform:translateY(-5px);
+        }
+
+        .card h3{
+            color:#2c3e50;
+            margin-bottom:10px;
+        }
+
+        .card p{
+            color:#7f8c8d;
+            font-size:14px;
+            margin-bottom:20px;
+        }
+
+        .card a{
+            display:inline-block;
+            padding:10px 16px;
+            background:#3498db;
+            color:white;
+            text-decoration:none;
+            border-radius:6px;
+            font-weight:bold;
+        }
+
+        .card a:hover{
+            background:#2980b9;
+        }
+
+        /* ===== MOBILE ===== */
+
+        @media(max-width:768px){
+
+            .content{
+                padding:15px;
+            }
+        }
+
+    </style>
+
+    <script>
+
+        function toggleMenu(){
+
+            document
+                .getElementById("sidebar")
+                .classList.toggle("active");
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+
+    <div class="navbar">
+
+        <span class="menu-icon"
+              onclick="toggleMenu()">
+
+            ☰
+
+        </span>
+
+        <span class="navbar-title">
+
+            Admin Dashboard
+
+        </span>
+
+    </div>
+
+    <!-- ===== SIDEBAR ===== -->
+
+    <div id="sidebar"
+         class="sidebar">
+
+        <a href="/admin_dashboard">
+            🏠 Dashboard
+        </a>
+
+        <a href="/manager_dashboard">
+            📋 Leave Requests
+        </a>
+
+        <a href="/employees">
+            👥 Employee Info
+        </a>
+
+        <a href="/add_employee">
+            ➕ Add Employee
+        </a>
+
+        <a href="/logout">
+            🚪 Logout
+        </a>
+
+    </div>
+
+    <!-- ===== CONTENT ===== -->
+
+    <div class="content">
+
+        <h2>Welcome Admin</h2>
+
+        <div class="card-container">
+
+            <!-- EMPLOYEE INFO -->
+
+            <div class="card">
+
+                <h3>
+                    Employee Management
+                </h3>
+
+                <p>
+                    View all employees in the organization.
+                </p>
+
+                <a href="/employees">
+
+                    Open
+
+                </a>
+
+            </div>
+
+            <!-- ADD EMPLOYEE -->
+
+            <div class="card">
+
+                <h3>
+                    Add Employee
+                </h3>
+
+                <p>
+                    Create employee, manager or admin accounts.
+                </p>
+
+                <a href="/add_employee">
+
+                    Add
+
+                </a>
+
+            </div>
+
+            <!-- LEAVE REQUESTS -->
+
+            <div class="card">
+
+                <h3>
+                    Leave Requests
+                </h3>
+
+                <p>
+                    Approve or reject employee leave requests.
+                </p>
+
+                <a href="/manager_dashboard">
+
+                    Manage
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
